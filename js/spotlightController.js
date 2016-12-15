@@ -11,7 +11,7 @@ nextGenApp.controller('spotlightController', function ($scope, $localStorage, $r
     // Open Dates
     $scope.lookupDates = function (artist) {
 
-        $http.get('http://api.songkick.com/api/3.0/artists/' + artist.event.uri + '/calendar.json?apikey=jwzmbEyCAIwD7HCy').success(function (data) {
+        $http.get('https://api.songkick.com/api/3.0/artists/' + artist.event.uri + '/calendar.json?apikey=jwzmbEyCAIwD7HCy').success(function (data) {
             $scope.tourDates = data;
             
             artist.dateToggle = true;
