@@ -1,0 +1,72 @@
+<div id="dashWrapper" ng-model="user">
+
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card user-card" ng-repeat="person in user">
+            <div class="card-img-top user-image" style="background-image: url('{{person.cover.source}}')" alt="Card image cap">
+                <div class="user-main-image" style="background-image: url('{{person.picture_large}}')"></div>
+
+            </div>
+            <div class="card-block hidden-sm-down col-md-12">
+                <h2>Hello, {{person.name}}</h2>
+
+
+            </div>
+            <div class="hidden-md-up">
+                <div class="user-info">
+                    <div class="user-main-image" style="background-image: url('{{person.picture_large}}')"></div>
+                    <h4>Hello, {{person.name}}</h4>
+
+                </div>
+                <div class="btn-group btn-group-sm mobileNav" role="group" aria-label="k">
+                    <a class="btn btn-primary" ui-sref="dashboard.spotlight">
+                        <i class="material-icons hidden-xs-down">lightbulb_outline</i> Spotlight
+                    </a>
+                    <a class="btn btn-primary" ui-sref="dashboard.queue">
+                        <i class="material-icons hidden-xs-down">playlist_add</i> Queue
+                    </a>
+                    <a class="btn btn-primary" ui-sref="dashboard.likes">
+                        <i class="material-icons hidden-xs-down">thumb_up</i> Liked Artist
+                    </a>
+                    <a class="btn btn-primary" ui-sref="dashboard.settings">
+                        <i class="material-icons hidden-xs-down">settings</i> Preferences
+                    </a>
+
+                </div>
+            </div>
+            <div class="hidden-sm-down col-sm-6 col-md-12 noPadding">
+                <ul class="list-group list-group-flush">
+                    <a ui-sref="dashboard.spotlight" class="tabLink" ng-class="{'activeNav' : $state.includes('dashboard.spotlight')}">
+
+                        <li class="list-group-item">
+                            <span class="tag tag-default float-xs-right"><i class="material-icons">lightbulb_outline</i> </span> Spotlight
+                        </li>
+                    </a>
+                    <a ui-sref="dashboard.queue" class="tabLink" ng-class="{'activeNav' : $state.includes('dashboard.queue')}">
+                        <li class="list-group-item">
+                            <span class="tag tag-default float-xs-right"><i class="material-icons">playlist_add</i></span> Queue
+                        </li>
+                    </a>
+                    <a ui-sref="dashboard.likes" class="tabLink" ng-class="{'activeNav' : $state.includes('dashboard.likes')}">
+
+                        <li class="list-group-item">
+                            <span class="tag tag-default float-xs-right"><i class="material-icons">thumb_up</i></span> Liked Artist
+                        </li>
+                    </a>
+                    <a ui-sref="dashboard.settings" class="tabLink" ng-class="{'activeNav' : $state.includes('dashboard.settings')}">
+                        <li class="list-group-item">
+                            <span class="tag tag-default float-xs-right"><i class="material-icons">settings</i></span> Preferences
+                        </li>
+                    </a>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+        <div class="subview" autoscroll="false" ui-view></div>
+    </div>
+    <div class="hidden-sm-down col-lg-2">
+
+    </div>
+</div>

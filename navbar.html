@@ -1,0 +1,45 @@
+<!-- Main Nav -->
+<nav class="navbar navbar-full navbar-fixed-top main-nav">
+    <a class="navbar-brand" href="#">
+        <i class="material-icons">volume_up</i> <span>audiomass <small>BETA</small></span>
+    </a>
+    <span class="navbar-text float-xs-right right-nav">
+        <div ng-repeat="person in user">
+            <div  class="user-main-image" style="background-image: url('{{person.picture_large}}')" ng-if="isAuthenticated"></div>
+        </div>
+        <a class="loginBtn" ng-click="login()" ng-if="!isAuthenticated">Login</a>
+        <a class="menuBtn" ng-click="logoutBtn()" ng-if="isAuthenticated">Signout</a>
+    </span>
+
+    <div ng-class="{'now-playing': currentSong, 'hidden': !currentSong }">
+        <div plangular="{{currentSong}}" plangular-repeat="true" class="customPlayer">
+            <button ng-click="previous()" class="playBtn">
+                <i class="material-icons">skip_previous</i>
+            </button>
+            <button ng-click="playPause()" title="Play/Pause" class="playBtn">
+                <i ng-if="player.playing !== track.src" class="material-icons">play_arrow</i>
+
+                <i ng-if="player.playing === track.src" class="material-icons">pause</i>
+
+            </button>
+            <button ng-click="next()" class="playBtn"><i class="material-icons">skip_next</i></button>
+            <div class="info-block-player">
+                <h2 class="artistName" style="font-size: 10px; margin-bottom: 0px;">{{track.user.username}}</h2>
+                <h3 class="trackName" style="font-size: 8px; margin-bottom: 3px;">{{track.title}}</h3>
+                <p class="" style="font-size: 8       px;">
+                    {{ currentTime | hhmmss }} / {{ duration | hhmmss }}
+                    <!--<span style="padding-left: 10px; font-size: 12px;">{{ index + 1 }} / {{ tracks.length }}</span>-->
+                </p>
+                <progress ng-click="seek($event)" ng-value="currentTime / duration" class="scrubber">
+                    {{ currentTime / duration }}
+                </progress>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</nav>

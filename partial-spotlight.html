@@ -1,0 +1,109 @@
+<h1><i class="material-icons">lightbulb_outline</i> Spotlight</h1>
+<div class="alert alert-danger" role="alert" ng-if="alreadyLiked">
+    <strong>Oh snap!</strong> You already liked this artist.
+</div>
+
+
+<div ng-repeat="card in spotlightResult">
+
+    <!-- soundcloud card -->
+    <div ng-if="card.event.type === 'soundcloud'" class="soundcloud-card">
+        <div class="card card-block">
+            <div class="artistImage" style="background-image: url('{{card.artist.image}}')">
+                <i class="material-icons" ng-click="addToQueue(card)">add</i>
+                <p class="queue-text">add to queue</p>
+            </div>
+            <div class="info-card-section">
+                <i class="material-icons pull-right" ng-click="like(card.artist)">thumb_up</i>
+                <p class="soundcloud-tag"><i class="material-icons">cloud</i> <span>Soundcloud</span></p>
+                <h5 class="card-title">{{card.artist.name}} - <small>{{card.event.meta.songName}}</small></h5>
+                <p class="genres">
+                    <span ng-repeat="genre in card.artist.genre">{{genre}} </span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- youtube card -->
+    <div ng-if="card.event.type === 'youtube'" class="youtube-card">
+        <div class="card card-block" ng-class="{'active-youtube': isPlayingVideo(card)}">
+            <youtube-video class="youtube-player" player="yt_video" player-vars="playerVars" video-url="card.event.uri"></youtube-video>
+
+            <button class="btn btn-primary close-btn" ng-click="closeVideo(); yt_video.stopVideo() ">close</button>
+
+            <div class="artistImage" style="background-image: url('{{card.artist.image}}')">
+                <i class="material-icons" ng-click="playVideo(card); yt_video.playVideo()">play_circle_outline</i>
+                <p class="queue-text">watch video</p>
+            </div>
+            <div class="info-card-section">
+                <i class="material-icons pull-right" ng-click="like(card.artist)">thumb_up</i>
+                <p class="soundcloud-tag"><i class="material-icons">live_tv</i> <span>Youtube</span></p>
+                <h5 class="card-title">{{card.artist.name}} - <small>{{card.event.meta.songName}}</small></h5>
+                <p class="genres">
+                    <span ng-repeat="genre in card.artist.genre">{{genre}} </span>
+                </p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Bands In Town card -->
+    <div ng-if="card.event.type === 'bands in town'" class="bandsintown-card">
+
+        <div class="card card-block">
+
+            <div class="artistImage" style="background-image: url('{{card.artist.image}}')">
+                <div ng-if="!card.dateToggle">
+                    <i class="material-icons" ng-click="lookupDates(card)">date_range</i>
+                    <p class="queue-text">View Dates</p>
+                </div>
+                <div ng-if="card.dateToggle">
+                    <i class="material-icons" ng-click="closeDates(card)">date_range</i>
+                    <p class="queue-text">Hide Dates</p>
+                </div>
+            </div>
+            <div class="info-card-section">
+                <i class="material-icons pull-right" ng-click="like(card.artist)">thumb_up</i>
+                <p class="soundcloud-tag"><i class="material-icons">date_range</i> <span>SongKick</span></p>
+                <h5 class="card-title">{{card.artist.name}}
+                <small>Performing near you!</small>
+                </h5>
+                <p class="nearby-date">
+                    {{card.event.meta.localTourDate}}
+                </p>
+
+            </div>
+
+
+            <div class="table-responsive" ng-if="card.dateToggle">
+                <table class="table">
+                    <tbody>
+                        <tr ng-repeat="date in tourDates.resultsPage.results.event">
+                            <td>
+                                <p>{{date.displayName}}</p>
+
+                                <small>{{date.location.city}}</small>
+                            </td>
+                            <td>
+                                <a class=" btn btn-sm btn-primary" target="_blank" href="{{date.uri}}">buy tickets</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>

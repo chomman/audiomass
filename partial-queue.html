@@ -1,0 +1,35 @@
+<h1><i class="material-icons">playlist_add</i> Queue  </h1>
+<div class="alert alert-danger" role="alert" ng-if="alreadyLiked">
+    <strong>Oh snap!</strong> You already liked this artist.
+</div>
+
+<div ng-if="playlist.length < 1" class="noResults">
+
+    <h1>Oh No! Your queue is empty!</h1>
+    <a class="btn btn-primary" ui-sref="dashboard.spotlight">Add Music From Spotlight</a>
+
+</div>
+
+<div ng-repeat="card in playlist">
+    <div class="soundcloud-card">
+        <div class="card card-block">
+            <div class="artistImage" style="background-image: url('{{card.artist.image}}')">
+                <i class="material-icons" ng-click="playSong(card)">play_circle_outline</i>
+                <p class="queue-text">play song</p>
+            </div>
+            <div class="info-card-section">
+                <div class="pull-right actionSect">
+                    <i class="material-icons" ng-click="like(card.artist)">thumb_up</i>
+                    <i class="material-icons" ng-click="removeFromQueue(card)">delete_forever</i>
+                </div>
+
+                <p class="soundcloud-tag"><i class="material-icons">cloud</i> <span>Soundcloud</span></p>
+                <h5 class="card-title">{{card.artist.name}} - <small>{{card.event.meta.songName}}</small></h5>
+                <p class="genres">
+                    <span ng-repeat="genre in card.artist.genre">{{genre}} </span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

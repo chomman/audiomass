@@ -1,0 +1,32 @@
+<h1><i class="material-icons">thumb_up</i> Liked Artists:</h1>
+<div clsas="row">
+
+    <div ng-if="likedArtist.length < 1" class="noResults">
+
+        <h1>You have not liked any artists</h1>
+        <a class="btn btn-primary" ui-sref="dashboard.spotlight">Listen & Like From Spotlight</a>
+
+    </div>
+    
+
+
+    
+    <div class="col-xs-12 col-sm-6 col-lg-12" ng-repeat="artist in likedArtist">
+        <div class="card card-inverse likedArtistCard">
+            <div class="card-img" alt="Card image" style="background-image: url('{{artist.image}}'); background-size: cover;"></div>
+            <div class="card-img-overlay">
+
+                <i class="material-icons unlikeArtist" ng-click="unlikeArtist(artist)">close</i>
+                <h4 class="card-title">{{artist.name}}</h4>
+
+                <button class="btn btn-default" ng-click="artistProfileLnk(artist)">View Profile</button>
+            </div>
+    
+            
+        </div>
+
+    </div>
+</div>
+
+
+
