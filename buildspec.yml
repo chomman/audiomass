@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo Installing S3 Site
-      - npm install -g s3-site-sync
+      - npm install s3-site-sync
   build:
     commands:
       - echo Build started on `date`
