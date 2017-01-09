@@ -20,8 +20,6 @@ var config = {
 	s3Options:              {
 		ACL:             'public-read',
 		Bucket:          'audiomass-web',
-		accessKeyId:     process.env.AWS_ACCESS_KEY_ID,
-		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 		region:          'us-east-1',
 		Prefix:          '',
 		concurrency:     8
@@ -49,7 +47,7 @@ var config = {
 					}*/
 				},
 				MinTTL:               0, /* required */
-				TargetOriginId:       'audiomass-web.s3-website-us-east-1.amazonaws.com', /* required, leave blank -- filled in
+				TargetOriginId:       '', /* required, leave blank -- filled in
                                                                                                       pragmatically */
 				TrustedSigners:       { /* required */
 					Enabled:  false, /* required (true || false) */
