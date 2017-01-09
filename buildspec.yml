@@ -5,7 +5,6 @@ phases:
     commands:
       - echo Installing S3 Site
       - npm install -g s3-website
-      - sudo mkdir ~/.aws && cd ~/.aws && sudo echo "[default]\naws_access_key_id = ${AWS_ACCESS_KEY_ID}\naws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> "credentials"
   build:
     commands:
       - echo Build started on `date`
