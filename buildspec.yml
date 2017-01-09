@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - s3-website deploy -d audiomass-web .
+      - sudo s3-website deploy -d audiomass-web .
   post_build:
     commands:
       - echo Build completed on `date`
