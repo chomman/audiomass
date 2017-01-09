@@ -20,4 +20,4 @@ artifacts:
     - ./**/*.css
     - ./**/*.html
     - ./**/*.json
-    - ./.env
+    - .env
