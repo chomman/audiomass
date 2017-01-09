@@ -81,7 +81,8 @@
                 }
             },
             "Aliases": {
-                "Quantity": 0
+                "Quantity": 1,
+                "Items" : ["www.audiomass.com"]
             }
         },
         "ActiveTrustedSigners": {
