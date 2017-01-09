@@ -1,6 +1,6 @@
 {
     "Distribution": {
-        "Status": "InProgress",
+        "Status": "Deployed",
         "DomainName": "	d458jxbuqt6w0.cloudfront.net",
         "InProgressInvalidationBatches": 0,
         "DistributionConfig": {
