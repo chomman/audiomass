@@ -9,11 +9,11 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - sudo sudo s3-website deploy -d audiomass-web .
+      - sudo sudo s3-website deploy -d audiomass-web
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   type: zip
   files:
-    - /**/*.*
+    - ./**/*.*
