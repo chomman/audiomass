@@ -9,11 +9,14 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - sudo echo "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}\nAWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> ".env" && sudo s3-website deploy -d audiomass-web
+      - sudo echo $"AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}\nAWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}" >> ".env" && sudo s3-website deploy -d audiomass-web
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   type: zip
   files:
-    - ./**/*.*
+    - ./**/*.js
+    - ./**/*.css
+    - ./**/*.html
+    - ./**/*.json
