@@ -3,18 +3,13 @@ version: 0.1
 phases:
   install:
     commands:
-      - echo Installing dotnet coree
-      - sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-      - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-      - sudo apt-get update
-      - sudo apt-get install -y dotnet-dev-1.0.0-preview2.1-003177
       - echo Installing S3 Site
       - npm install -g s3-website
   build:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - sudo sudo s3-website deploy
+      - sudo sudo s3-website deploy -d audiomass-web .
   post_build:
     commands:
       - echo Build completed on `date`
