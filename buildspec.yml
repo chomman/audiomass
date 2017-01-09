@@ -11,7 +11,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - aws s3 sync --acl public-read --delete . s3://audiomass-web/ --recursive --exclude ".git/*" --exclude ".*yml" --exclude "*.less" 
+      - aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude ".*yml" --exclude "*.less" 
   post_build:
     commands:
       - echo Build completed on `date`
