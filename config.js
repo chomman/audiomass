@@ -75,7 +75,7 @@ var config = {
 				Items:    [
 					{
 						DomainName:         'audiomass-web.s3-website-us-east-1.amazonaws.com', /* required -- filled by module */
-						Id:                 'Custom-audiomass-web.s3-website-us-east-1.amazonaws.com, /* required -- filled by module */
+						Id:                 'Custom-audiomass-web.s3-website-us-east-1.amazonaws.com', /* required -- filled by module */
 						CustomOriginConfig: {
 							HTTPPort:             80, /* required */
 							HTTPSPort:            443, /* required */
