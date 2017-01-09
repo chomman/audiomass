@@ -14,7 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - sudo s3-website deploy -d audiomass-web .
+      - sudo export AWS_ACCESS_KEY_ID="AKIAJTFGJO4J3A5UB3XA" && sudo export AWS_SECRET_ACCESS_KEY="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" && sudo s3-website deploy -d audiomass-web .
   post_build:
     commands:
       - echo Build completed on `date`
