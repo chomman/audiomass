@@ -95,6 +95,17 @@ a {
   margin: auto;
   top: -2px;
 }
+@media (max-width: 768px) {
+  .main-nav .customPlayer {
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    top: auto;
+    bottom: 0;
+    background: white;
+    right: 0;
+  }
+}
 .main-nav .customPlayer .scrubber {
   width: 50%;
   /* float: left; */
