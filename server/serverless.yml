@@ -17,7 +17,21 @@ provider:
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
-
+resources:  # CloudFormation template syntax
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: User
+        AttributeDefinitions:
+          - AttributeName: accountId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: accountId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 functions:
 #user
   getUser:
