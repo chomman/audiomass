@@ -1,0 +1,32 @@
+service: audiomass-api # NOTE: update this with your service name
+
+custom: ${file(../config-dev.yml)} # You can reference the entire file
+provider:
+  name: aws
+  runtime: dotnetcore1.0
+  stage: dev # Set the default stage used. Default is dev
+  region: us-east-1 # Overwrite the default region used. Default is us-east-1
+  timeout: 30 # The default is 6
+  region: us-east-1
+
+# you can define service wide environment variables here  
+  environment:
+    test: testValue
+
+# you can add packaging information here
+#package:
+#  artifact: bin/Debug/netcoreapp1.0/publish/deploy-package.zip
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+#profile
+  getProfile:
+    environment:
+    handler: AWSServerless::AWSServerless.Account::Profile_Get
+    events:
+      - http:
+          path: account/profile
+          method: get
+          cors: true
