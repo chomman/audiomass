@@ -1,0 +1,29 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - sudo pip install awscli
+      - aws configure set region us-east-1
+      - aws configure set preview.cloudfront true
+      - aws configure set preview.create-invalidation true
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Deploying site
+      - aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude "*.yml" --exclude "*.less" 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  type: zip
+  files:
+    - ./*.js
+    - ./js/*.js
+    - ./node_modules/angular-auth0/*.*
+    - ./node_modules/angular-jwt/*.*
+    - ./node_modules/angular-lock/*.*
+    - ./*.css
+    - ./*.html
+    - ./*.json
+    - ./images/**/*.*
