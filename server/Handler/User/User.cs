@@ -17,7 +17,7 @@ namespace AudioMass.Handler
         {
             var session = GetSession(context);
 
-            return (await new Model.User().Get("User", session.AccountId)).CreateResponse();
+            return (await new Models.User().Get("User", session.AccountId)).CreateResponse();
         }
     }
 }
