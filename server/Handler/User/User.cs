@@ -19,5 +19,17 @@ namespace AudioMass.Handler
 
             return (await new Models.User().Get("User", session.AccountId)).CreateResponse();
         }
+        
+        public async Task<APIGatewayProxyResponse> Profile_Update(APIGatewayProxyRequest request, ILambdaContext context)
+        {
+            var session = GetSession(context);
+
+            var user = request.Body.FromJson<Models.User>();
+            user.Id = session.AccountId;
+
+            var success = await user.Update("User", this);
+            
+            return success.CreateResponse();
+        }
     }
 }
