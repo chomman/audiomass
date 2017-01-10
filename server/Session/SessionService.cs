@@ -8,9 +8,9 @@ namespace AudioMass.Session
 {
     public class SessionService
     {
-        public static AuthSession GetSession(string bearerToken)
+        public static Models.AuthSession GetSession(string bearerToken)
         {
-            return new AuthSession
+            return new Models.AuthSession
             {
                 AccountId = "0014100000CQnTw"
             };
