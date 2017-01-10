@@ -20,7 +20,7 @@ namespace AudioMass.Handler
             return (await new Models.User().Get("User", session.AccountId)).CreateResponse();
         }
         
-        public async Task<APIGatewayProxyResponse> Profile_Update(APIGatewayProxyRequest request, ILambdaContext context)
+        public async Task<APIGatewayProxyResponse> Update(APIGatewayProxyRequest request, ILambdaContext context)
         {
             var session = GetSession(context);
 
