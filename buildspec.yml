@@ -11,19 +11,19 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Deploying site
-      - aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude "*.yml" --exclude "*.less" 
+      - cd client && aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude "*.yml" --exclude "*.less" 
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   type: zip
   files:
-    - ./*.js
-    - ./js/*.js
-    - ./node_modules/angular-auth0/*.*
-    - ./node_modules/angular-jwt/*.*
-    - ./node_modules/angular-lock/*.*
-    - ./*.css
-    - ./*.html
-    - ./*.json
-    - ./images/**/*.*
+    - ./client/*.js
+    - ./client/js/*.js
+    - ./client/node_modules/angular-auth0/*.*
+    - ./client/node_modules/angular-jwt/*.*
+    - ./client/node_modules/angular-lock/*.*
+    - ./client/*.css
+    - ./client/*.html
+    - ./client/*.json
+    - ./client/images/**/*.*
