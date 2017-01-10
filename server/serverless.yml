@@ -19,12 +19,20 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-#profile
-  getProfile:
+#user
+  getUser:
     environment:
-    handler: AWSServerless::AWSServerless.Account::Profile_Get
+    handler: AudioMass::AudioMass.Handler.User::Get
     events:
       - http:
           path: account/profile
           method: get
+          cors: true
+  updateUser:
+    environment:
+    handler: AudioMass::AudioMass.Handler.User::Update
+    events:
+      - http:
+          path: account/profile
+          method: post
           cors: true
