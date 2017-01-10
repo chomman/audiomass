@@ -12,7 +12,6 @@ phases:
       - echo Build started on `date`
       - echo Deploying site
       - aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude "*.yml" --exclude "*.less" 
-      - aws cloudfront update-distribution --id E3EKVJ20P800MP --distribution-config file://config/distconfig/json
   post_build:
     commands:
       - echo Build completed on `date`
