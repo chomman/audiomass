@@ -1,0 +1,11 @@
+{
+  "name": "audiomass-server",
+  "version": "1.0.0",
+  "description": "A Serverless AudioMass",
+  "author": "John Standish",
+  "license": "MIT",
+  "dependencies": {
+    "serverless": "1.5.0",
+    "serverless-dotnet": "1.0.4"
+  }
+}
