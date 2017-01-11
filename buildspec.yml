@@ -16,7 +16,7 @@ phases:
       - aws configure set preview.cloudfront true
       - aws configure set preview.create-invalidation true
       - echo Installing Required Modules...
-      - cd server && npm install
+      - cd server && npm install && npm i -g serverless
   build:
     commands:
       - echo Build started on `date`
