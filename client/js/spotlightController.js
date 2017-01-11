@@ -13,7 +13,7 @@ nextGenApp.controller('spotlightController', function ($scope, $localStorage, $r
     // User Info
     spotlightService.fetchUserSpotlight().success(function (response) {
         for (var i = 0; i < response.length; i++) {
-            response[i].meta.type = metaLookup[response[i].meta.type];
+            response[i].event.type = metaLookup[response[i].event.type];
         }
         $scope.spotlightResult = response;
 

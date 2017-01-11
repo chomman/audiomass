@@ -24,9 +24,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "client", "client\", "{6E419
 		SlnRelativePath = "client\"
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AudioMass", "api\AudioMass.xproj", "{012A43B4-4A11-4E5A-B607-9DCA010D62BF}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AudioMass", "server\AudioMass.xproj", "{012A43B4-4A11-4E5A-B607-9DCA010D62BF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AudioMass.Tests", "api.tests\AudioMass.Tests.xproj", "{F07088DA-8613-4EA9-9D81-9C9A41C3DCF6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AudioMass.Tests", "server.tests\AudioMass.Tests.xproj", "{F07088DA-8613-4EA9-9D81-9C9A41C3DCF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
