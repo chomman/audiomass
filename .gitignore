@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/server/bin
+/server/node_modules
+/server/obj
+/server.tests/bin/Debug/netcoreapp1.0
+/server.tests/obj/Debug/netcoreapp1.0

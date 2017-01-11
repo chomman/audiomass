@@ -22,36 +22,36 @@ namespace AudioMass.Extensions
 
             //todo: get dynamo client and create
 
-            SuccessResponse success = null;
+            //SuccessResponse success = null;
 
-            if (typeof(T).GetRuntimeProperties().Any(p => p.Name == "Id"))
-            {
-                var prop = typeof(T).GetRuntimeProperties().Where(p => p.Name == "Id").First();
-                var value = prop.GetValue(model);
+            //if (typeof(T).GetRuntimeProperties().Any(p => p.Name == "Id"))
+            //{
+            //    var prop = typeof(T).GetRuntimeProperties().Where(p => p.Name == "Id").First();
+            //    var value = prop.GetValue(model);
 
-                if (value == null)
-                {
-                    success = await client.CreateAsync(objectName, model);
-                    prop.SetValue(model, success.Id);
-                }
-                else
-                {
-                    success = await client.UpdateAsync(objectName, value.ToString(), model);
-                }
+            //    if (value == null)
+            //    {
+            //        success = await client.CreateAsync(objectName, model);
+            //        prop.SetValue(model, success.Id);
+            //    }
+            //    else
+            //    {
+            //        success = await client.UpdateAsync(objectName, value.ToString(), model);
+            //    }
                 
-            }
-            else
-            {
-                success = await client.CreateAsync(objectName, model);
-            }
+            //}
+            //else
+            //{
+            //    success = await client.CreateAsync(objectName, model);
+            //}
 
-            if (success.Success)
-            {
-                return model;
-            }else
-            {
-                return default(T);
-            }
+            //if (success.Success)
+            //{
+            //    return model;
+            //}else
+            //{
+            //    return default(T);
+            //}
         }
         public static async Task<T> Get<T>(this T model, string objectName, string id)
         {
@@ -71,7 +71,7 @@ namespace AudioMass.Extensions
         {
             //todo: query dynamo
             //return (await client.QueryByConstraintAsync<T>(objectName, field, operand, value));
-            return default(T);
+            return new List<T>(new T[] { default(T) });
         }
     }
 }

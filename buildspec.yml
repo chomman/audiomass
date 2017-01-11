@@ -4,29 +4,29 @@ phases:
   install:
     commands:
       - sudo pip install awscli
-      #- echo Installing dotnet coree
-      #- sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-      #- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-      #- sudo apt-get update
-      #- sudo apt-get install -y dotnet-dev-1.0.0-preview2.1-003177
+      - echo Installing dotnet coree
+      - sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+      - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+      - sudo apt-get update
+      - sudo apt-get install -y dotnet-dev-1.0.0-preview2.1-003177
   pre_build:
     commands:
       - echo Configure AWS cli
       - aws configure set region us-east-1
       - aws configure set preview.cloudfront true
       - aws configure set preview.create-invalidation true
-      #- echo Installing Required Modules...
-      #- cd server && npm install
+      - echo Installing Required Modules...
+      - cd server && npm install
   build:
     commands:
       - echo Build started on `date`
-      #- echo Compiling AAL API 
-      #- cd server/AWSServerless && dotnet build
+      - echo Compiling AAL API 
+      - cd server/AWSServerless && dotnet build
   post_build:
     commands:
       - echo Build completed on `date`
-      #- echo Deploying API
-      #- cd server && serverless deploy
+      - echo Deploying API
+      - cd server && serverless deploy
       - echo Deploying site
       - cd client && aws s3 sync --acl public-read --delete . s3://audiomass-web/ --exclude ".git/*" --exclude "*.yml" --exclude "*.less" 
 artifacts:
@@ -41,4 +41,4 @@ artifacts:
     - ./client/*.html
     - ./client/*.json
     - ./client/images/**/*.*
-    #- ./server/bin/**/*.*
+    - ./server/bin/**/*.*

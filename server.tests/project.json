@@ -13,7 +13,7 @@
     "Amazon.Lambda.TestUtilities": "1.0.0*",
     "xunit": "2.1.0-*",
     "dotnet-test-xunit": "2.2.0-*",
-    "AudioMass": "1.0.0-*"
+    "server": "1.0.0-*"
   },
 
   "testRunner": "xunit",

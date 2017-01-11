@@ -111,7 +111,7 @@ nextGenApp.factory("spotlightService", ['$http',function($http){
     var obj = {};
     
     obj.fetchUserSpotlight = function(){ 
-        return $http.get('spotlight.json');
+        return $http.get('https://s1b9fy4rf4.execute-api.us-east-1.amazonaws.com/dev/spotlight');
     };
 
  return obj;

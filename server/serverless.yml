@@ -11,42 +11,48 @@ provider:
   environment:
     test: testValue
 
-# you can add packaging information here
-#package:
-#  artifact: bin/Debug/netcoreapp1.0/publish/deploy-package.zip
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
-resources:  # CloudFormation template syntax
-  Resources:
-    usersTable:
-      Type: AWS::DynamoDB::Table
-      Properties:
-        TableName: User
-        AttributeDefinitions:
-          - AttributeName: accountId
-            AttributeType: S
-        KeySchema:
-          - AttributeName: accountId
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+#resources:  # CloudFormation template syntax
+#  Resources:
+#    usersTable:
+#      Type: AWS::DynamoDB::Table
+#      Properties:
+#        TableName: User
+#        AttributeDefinitions:
+#          - AttributeName: accountId
+#            AttributeType: S
+#        KeySchema:
+#          - AttributeName: accountId
+#            KeyType: HASH
+#        ProvisionedThroughput:
+#          ReadCapacityUnits: 1
+#          WriteCapacityUnits: 1
 functions:
 #user
   getUser:
     environment:
-    handler: AudioMass::AudioMass.Handler.User::Get
+    handler: server::AudioMass.Handler.User.Handler::Get
     events:
       - http:
-          path: account/profile
+          path: settings
           method: get
           cors: true
   updateUser:
     environment:
-    handler: AudioMass::AudioMass.Handler.User::Update
+    handler: server::AudioMass.Handler.User.Handler::Update
     events:
       - http:
-          path: account/profile
+          path: settings
           method: post
           cors: true
+#spotlight
+  getSpotlight:
+    environment:
+    handler: server::AudioMass.Handler.Spotlight.Handler::Get
+    events:
+      - http:
+          path: spotlight
+          method: get
+          cors: true
+
+plugins:
+  - serverless-dotnet
