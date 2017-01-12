@@ -36,16 +36,6 @@ resources:  # CloudFormation template syntax
         KeySchema:
           - AttributeName: artistId
             KeyType: HASH
-        GlobalSecondaryIndexes:
-          - IndexName: IDX_EventDate
-            KeySchema:
-              - AttributeName: eventDate
-                KeyType: HASH
-            Projection:
-                ProjectionType: INCLUDE
-                NonKeyAttributes:
-                    - eventDate
-                    - artistId
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
