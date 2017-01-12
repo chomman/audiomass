@@ -26,6 +26,29 @@ resources:  # CloudFormation template syntax
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+    aritstEventEntriesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: SpotlightEntries
+        AttributeDefinitions:
+          - AttributeName: artistId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: artistId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: IDX_EventDate
+            KeySchema:
+              - AttributeName: eventDate
+                KeyType: HASH
+            Projection:
+                ProjectionType: INCLUDE
+                NonKeyAttributes:
+                    - eventDate
+                    - artistId
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 functions:
 #user
   getUser:
